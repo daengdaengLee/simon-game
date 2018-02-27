@@ -7,6 +7,7 @@ class App extends Component {
     return (
       <div>
         <span className="My__Display"></span>
+        <button className="My__StartButton">Start</button>
       </div>
     );
   }
