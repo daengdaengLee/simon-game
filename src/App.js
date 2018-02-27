@@ -22,10 +22,14 @@ class App extends Component {
   }
 
   _start() {
-    const { _makeGame, _showGame } = this;
-    const game = _makeGame(1);
+    const { _makeRandomInt, _showGame } = this;
+    const game = [_makeRandomInt()];
     setTimeout(() => _showGame(game), 500);
     this.setState({ game, count: 1 });
+  }
+
+  _makeRandomInt() {
+    return Math.round(Math.random() * 3) + 1;
   }
 
   _makeGame(count) {
@@ -74,13 +78,13 @@ class App extends Component {
   }
 
   _nextStage() {
-    const { _makeGame, _showGame } = this;
-    const { count } = this.state;
-    const game = _makeGame(count + 1);
-    setTimeout(() => _showGame(game), 500);
+    const { _makeRandomInt, _showGame } = this;
+    const { count, game } = this.state;
+    const nextGame = [...game, _makeRandomInt()];
+    setTimeout(() => _showGame(nextGame), 500);
     this.setState({
       count: count + 1,
-      game,
+      game: nextGame,
       player: [],
     });
   }
