@@ -32,10 +32,15 @@ class App extends Component {
 
   render() {
     const { _start, _playerInput } = this;
-    const { activeButton } = this.state;
+    const { activeButton, game, player } = this.state;
     return (
       <div>
-        <span className="My__Display"></span>
+        <span className="My__Display">
+          {
+            !game || !player ? '' :
+              game === player ? 'SUCCESS' : 'FAIL'
+          }
+        </span>
         <button className="My__StartButton" onClick={_start}>Start</button>
         <button
           className={activeButton === 1 ? 'My__Button__Active' : null}
