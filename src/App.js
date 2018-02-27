@@ -6,8 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      game: null,
-      player: null,
+      game: [],
+      player: [],
       activeButton: null,
     };
     this._start = this._start.bind(this);
@@ -17,8 +17,8 @@ class App extends Component {
 
   _start() {
     const { _clearActiveButton } = this;
-    const game = Math.round(Math.random() * 3) + 1;
-    this.setState({ game, activeButton: game });
+    const buttonId = Math.round(Math.random() * 3) + 1;
+    this.setState({ game: [buttonId], activeButton: buttonId });
     setTimeout(_clearActiveButton, 1500);
   }
 
@@ -27,7 +27,7 @@ class App extends Component {
   }
 
   _playerInput(buttonId) {
-    this.setState({ player: buttonId });
+    this.setState({ player: [buttonId] });
   }
 
   render() {
@@ -37,8 +37,8 @@ class App extends Component {
       <div>
         <span className="My__Display">
           {
-            !game || !player ? '' :
-              game === player ? 'SUCCESS' : 'FAIL'
+            game.length === 0 || player.length === 0 ? '' :
+              game[0] === player[0] ? 'SUCCESS' : 'FAIL'
           }
         </span>
         <button className="My__StartButton" onClick={_start}>Start</button>
