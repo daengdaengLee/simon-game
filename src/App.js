@@ -41,8 +41,8 @@ class App extends Component {
     let delay = 1000;
     for(let i = 0; i < game.length; i += 1) {
       setTimeout(() => _activateButton(game[i]), delay);
-      delay += 1000;
-      if(i === game.length - 1) setTimeout(_clearActiveButton, delay + 1000);
+      setTimeout(_clearActiveButton, delay + 1000);
+      delay += 2000;
     }
   }
 
