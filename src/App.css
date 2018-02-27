@@ -8,3 +8,7 @@
 .My__StartButton {
   text-transform: uppercase;
 }
+
+.My__Button__Active {
+  background-color: red;
+}

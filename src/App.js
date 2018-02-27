@@ -19,14 +19,15 @@ class App extends Component {
 
   render() {
     const { _start } = this;
+    const { game } = this.state;
     return (
       <div>
         <span className="My__Display"></span>
         <button className="My__StartButton" onClick={_start}>Start</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
+        <button className={game === 1 ? 'My__Button__Active' : null}>1</button>
+        <button className={game === 2 ? 'My__Button__Active' : null}>2</button>
+        <button className={game === 3 ? 'My__Button__Active' : null}>3</button>
+        <button className={game === 4 ? 'My__Button__Active' : null}>4</button>
       </div>
     );
   }
