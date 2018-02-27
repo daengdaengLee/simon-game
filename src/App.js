@@ -6,20 +6,52 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      game: null,
-      player: null,
+      count: 0,
+      game: [],
+      player: [],
       activeButton: null,
     };
     this._start = this._start.bind(this);
+    this._activateButton = this._activateButton.bind(this);
     this._clearActiveButton = this._clearActiveButton.bind(this);
+    this._showGame = this._showGame.bind(this);
     this._playerInput = this._playerInput.bind(this);
+    this._successFail = this._successFail.bind(this);
+    this._resetPlayer = this._resetPlayer.bind(this);
+    this._nextStage = this._nextStage.bind(this);
   }
 
   _start() {
-    const { _clearActiveButton } = this;
-    const game = Math.round(Math.random() * 3) + 1;
-    this.setState({ game, activeButton: game });
-    setTimeout(_clearActiveButton, 1500);
+    const { _makeRandomInt, _showGame } = this;
+    const game = [_makeRandomInt()];
+    setTimeout(() => _showGame(game), 500);
+    this.setState({ game, count: 1 });
+  }
+
+  _makeRandomInt() {
+    return Math.round(Math.random() * 3) + 1;
+  }
+
+  _makeGame(count) {
+    const game = [];
+    for(let i = 0; i < count; i += 1) {
+      game.push(Math.round(Math.random() * 3) + 1);
+    }
+    return game;
+  }
+
+  _showGame(game) {
+    const { _activateButton, _clearActiveButton } = this;
+    let delay = 1000;
+    for(let i = 0; i < game.length; i += 1) {
+      setTimeout(() => _activateButton(game[i]), delay);
+      setTimeout(_clearActiveButton, delay + 1000);
+      delay += 2000;
+    }
+  }
+
+  _activateButton(buttonId) {
+    this.setState({ activeButton: buttonId });
   }
 
   _clearActiveButton() {
@@ -27,18 +59,52 @@ class App extends Component {
   }
 
   _playerInput(buttonId) {
-    this.setState({ player: buttonId });
+    this.setState(prevState => {
+      return { player: [...prevState.player, buttonId] };
+    });
+  }
+
+  _successFail(game, player) {
+    const { _nextStage, _resetPlayer } = this;
+    const len = player.length;
+    if(game[len - 1] !== player[len - 1]) {
+      setTimeout(_resetPlayer, 1000);
+      return 'FAIL';
+    }
+    if(game.length === len) {
+      setTimeout(_nextStage, 1000);
+      return 'SUCCESS';
+    }
+  }
+
+  _nextStage() {
+    const { _makeRandomInt, _showGame } = this;
+    const { count, game } = this.state;
+    const nextGame = [...game, _makeRandomInt()];
+    setTimeout(() => _showGame(nextGame), 500);
+    this.setState({
+      count: count + 1,
+      game: nextGame,
+      player: [],
+    });
+  }
+
+  _resetPlayer() {
+    this.setState({
+      player: [],
+    });
   }
 
   render() {
-    const { _start, _playerInput } = this;
+    const { _start, _playerInput, _successFail } = this;
     const { activeButton, game, player } = this.state;
     return (
       <div>
         <span className="My__Display">
           {
-            !game || !player ? '' :
-              game === player ? 'SUCCESS' : 'FAIL'
+            game.length === 0 || player.length === 0
+              ? ''
+              : _successFail(game, player)
           }
         </span>
         <button className="My__StartButton" onClick={_start}>Start</button>
