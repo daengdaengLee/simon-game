@@ -6,6 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      count: 0,
       game: [],
       player: [],
       activeButton: null,
@@ -16,10 +17,18 @@ class App extends Component {
   }
 
   _start() {
-    const { _clearActiveButton } = this;
-    const buttonId = Math.round(Math.random() * 3) + 1;
-    this.setState({ game: [buttonId], activeButton: buttonId });
+    const { _clearActiveButton, _makeGame } = this;
+    const game = _makeGame(1);
+    this.setState({ game, activeButton: game[0] });
     setTimeout(_clearActiveButton, 1500);
+  }
+
+  _makeGame(count) {
+    const game = [];
+    for(let i = 0; i < count; i += 1) {
+      game.push(Math.round(Math.random() * 3) + 1);
+    }
+    return game;
   }
 
   _clearActiveButton() {
