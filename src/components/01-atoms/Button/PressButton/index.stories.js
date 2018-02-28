@@ -6,10 +6,10 @@ import PressButton from './index';
 
 storiesOf('PressButton', module)
 .add('red', () => <PressButton
-  onClick={() => alert('PressButton Red')}
+  onClick={() => console.log('PressButton Red')}
   color="Red"
 />)
 .add('yellow', () => <PressButton
-onClick={() => alert('PressButton Yellow')}
+onClick={() => console.log('PressButton Yellow')}
 color="Yellow"
 />);
