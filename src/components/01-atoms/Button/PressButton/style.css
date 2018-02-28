@@ -10,3 +10,10 @@
 .My__PressButton:active {
   transform: translateY(2px);
 }
+
+.My__BackgroundColor__Red {
+  background-color: #FC0102;
+}
+.My__BackgroundColor__Yellow {
+  background-color: #FFFF00;
+}
