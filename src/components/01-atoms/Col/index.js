@@ -17,7 +17,7 @@ const Col = ({ children, justifyContent, alignItems, width, height, border, back
 
 Col.propTypes = {
   children: PropTypes.node.isRequired,
-  justifyContent: PropTypes.oneOf(['SpaceBetween']),
+  justifyContent: PropTypes.oneOf(['SpaceBetween', 'SpaceAround', 'Center']),
   alignItems: PropTypes.oneOf(['Center']),
   width: PropTypes.string,
   height: PropTypes.string,
