@@ -4,5 +4,5 @@ import { storiesOf } from '@storybook/react';
 
 import Display from './index';
 
-storiesOf('Display', module)
-.add('display', () => <Display>START</Display>);
+storiesOf('Atoms', module)
+.add('Display', () => <Display>START</Display>);
