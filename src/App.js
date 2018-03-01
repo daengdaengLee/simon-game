@@ -96,6 +96,9 @@ class App extends Component {
   }
 
   _resetPlayer() {
+    const { _showGame } = this;
+    const { game } = this.state;
+    setTimeout(() => _showGame(game), 500);
     this.setState({
       player: [],
     });
