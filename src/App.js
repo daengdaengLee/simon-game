@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import PressButton from './components/01-atoms/PressButton';
+import LabeledButton from './components/02-molecules/LabeledButton';
 import Display from './components/01-atoms/Display';
 import Col from './components/01-atoms/Col';
 import GameBoard from './components/02-molecules/GameBoard';
@@ -115,7 +115,7 @@ class App extends Component {
               : _successFail(game, player)
           }
         </Display>
-        <PressButton onClick={_start} color="Red" />
+        <LabeledButton onClick={_start} color="Red" label="Start" />
         <GameBoard playerInput={_playerInput} activeButton={activeButton} />
       </Col>
     );
