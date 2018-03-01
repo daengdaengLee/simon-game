@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 
+import PressButton from './components/01-atoms/PressButton';
+import Display from './components/01-atoms/Display';
+import Row from './components/01-atoms/Row';
+import Col from './components/01-atoms/Col';
+import GameButton from './components/01-atoms/GameButton';
+
 import './App.css';
 
 class App extends Component {
@@ -99,32 +105,42 @@ class App extends Component {
     const { _start, _playerInput, _successFail } = this;
     const { activeButton, game, player } = this.state;
     return (
-      <div>
-        <span className="My__Display">
+      <Col justifyContent="Center" alignItems="Center">
+        <Display>
           {
             game.length === 0 || player.length === 0
               ? ''
               : _successFail(game, player)
           }
-        </span>
-        <button className="My__StartButton" onClick={_start}>Start</button>
-        <button
-          className={activeButton === 1 ? 'My__Button__Active' : null}
-          onClick={() => _playerInput(1)}
-        >1</button>
-        <button
-          className={activeButton === 2 ? 'My__Button__Active' : null}
-          onClick={() => _playerInput(2)}
-        >2</button>
-        <button
-          className={activeButton === 3 ? 'My__Button__Active' : null}
-          onClick={() => _playerInput(3)}
-        >3</button>
-        <button
-          className={activeButton === 4 ? 'My__Button__Active' : null}
-          onClick={() => _playerInput(4)}
-        >4</button>
-      </div>
+        </Display>
+        <PressButton onClick={_start} color="Red" />
+        <Col>
+          <Row>
+            <GameButton
+              active={activeButton === 1}
+              color="Red"
+              onClick={() => _playerInput(1)}
+            />
+            <GameButton
+              active={activeButton === 2}
+              color="Yellow"
+              onClick={() => _playerInput(2)}
+            />
+          </Row>
+          <Row>
+            <GameButton
+              active={activeButton === 3}
+              color="Blue"
+              onClick={() => _playerInput(3)}
+            />
+            <GameButton
+              active={activeButton === 4}
+              color="Green"
+              onClick={() => _playerInput(4)}
+            />
+          </Row>
+        </Col>
+      </Col>
     );
   }
 }
