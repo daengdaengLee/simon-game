@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
 }
-.My__Col.My__JustifyContent__Center {
-  justify-content: center;
+.My__Col.My__JustifyContent__SpaceBetween {
+  justify-content: space-between;
 }
 .My__Col.My__AlignItems__Center {
   align-items: center;
