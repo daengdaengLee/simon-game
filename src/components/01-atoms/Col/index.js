@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-const Col = ({ children, justifyContent, alignItems }) => {
+const Col = ({ children, justifyContent, alignItems, width, height, border, backgroundColor }) => {
+  const styles = { width, height, border, backgroundColor };
   let myClassName = 'My__Col';
   if(justifyContent) myClassName += ` My__JustifyContent__${justifyContent}`;
   if(alignItems) myClassName += ` My__AlignItems__${alignItems}`;
   return (
-    <div className={myClassName}>
+    <div style={styles} className={myClassName}>
       {children}
     </div>
   );
@@ -18,6 +19,10 @@ Col.propTypes = {
   children: PropTypes.node.isRequired,
   justifyContent: PropTypes.oneOf(['Center']),
   alignItems: PropTypes.oneOf(['Center']),
+  width: PropTypes.string,
+  height: PropTypes.string,
+  border: PropTypes.string,
+  backgroundColor: PropTypes.string,
 };
 
 export default Col;
