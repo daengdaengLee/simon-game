@@ -1,0 +1,13 @@
+.My__Display {
+  width: 5rem;
+  height: 3rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border:3px solid #222222;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  color: #DC0D29;
+  background-color: #32050C;
+  user-select: none;
+}
