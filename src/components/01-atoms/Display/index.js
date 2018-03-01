@@ -6,7 +6,7 @@ import './style.css'
 const Display = ({ children }) => <div className="My__Display">{children}</div>;
 
 Display.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
 };
 
 export default Display;

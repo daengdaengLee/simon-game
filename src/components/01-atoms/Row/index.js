@@ -13,7 +13,7 @@ const Row = ({ children, justifyContent, alignItems, width, height, border, back
 
 Row.propTypes = {
   children: PropTypes.node.isRequired,
-  justifyContent: PropTypes.oneOf(['SpaceBetween']),
+  justifyContent: PropTypes.oneOf(['SpaceBetween', 'Center']),
   alignItems: PropTypes.oneOf(['Center']),
   width: PropTypes.string,
   height: PropTypes.string,

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
-import LabeledButton from './components/02-molecules/LabeledButton';
-import Display from './components/01-atoms/Display';
 import Col from './components/01-atoms/Col';
 import GameBoard from './components/02-molecules/GameBoard';
+import GameConsole from './components/03-organisms/GameConsole';
 
 import './App.css';
 
@@ -107,15 +106,15 @@ class App extends Component {
     const { _start, _playerInput, _successFail } = this;
     const { activeButton, game, player } = this.state;
     return (
-      <Col justifyContent="Center" alignItems="Center">
-        <Display>
-          {
+      <Col justifyContent="SpaceBetween" alignItems="Center" height="20rem">
+        <GameConsole
+          start={_start}
+          display={
             game.length === 0 || player.length === 0
               ? ''
               : _successFail(game, player)
           }
-        </Display>
-        <LabeledButton onClick={_start} color="Red" label="Start" />
+        />
         <GameBoard playerInput={_playerInput} activeButton={activeButton} />
       </Col>
     );
