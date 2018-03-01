@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 
-import PressButton from './components/01-atoms/PressButton';
+import LabeledButton from './components/02-molecules/LabeledButton';
 import Display from './components/01-atoms/Display';
-import Row from './components/01-atoms/Row';
 import Col from './components/01-atoms/Col';
-import GameButton from './components/01-atoms/GameButton';
+import GameBoard from './components/02-molecules/GameBoard';
 
 import './App.css';
 
@@ -116,33 +115,8 @@ class App extends Component {
               : _successFail(game, player)
           }
         </Display>
-        <PressButton onClick={_start} color="Red" />
-        <Col>
-          <Row>
-            <GameButton
-              active={activeButton === 1}
-              color="Red"
-              onClick={() => _playerInput(1)}
-            />
-            <GameButton
-              active={activeButton === 2}
-              color="Yellow"
-              onClick={() => _playerInput(2)}
-            />
-          </Row>
-          <Row>
-            <GameButton
-              active={activeButton === 3}
-              color="Blue"
-              onClick={() => _playerInput(3)}
-            />
-            <GameButton
-              active={activeButton === 4}
-              color="Green"
-              onClick={() => _playerInput(4)}
-            />
-          </Row>
-        </Col>
+        <LabeledButton onClick={_start} color="Red" label="Start" />
+        <GameBoard playerInput={_playerInput} activeButton={activeButton} />
       </Col>
     );
   }
