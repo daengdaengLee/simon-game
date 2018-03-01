@@ -17,7 +17,7 @@ const GameConsole = ({ display, start }) => (
 );
 
 GameConsole.propTypes = {
-  display: PropTypes.any.isRequired,
+  display: PropTypes.any,
   start: PropTypes.func.isRequired,
 };
 
