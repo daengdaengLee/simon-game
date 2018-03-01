@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
@@ -11,6 +12,12 @@ const Col = ({ children, justifyContent, alignItems }) => {
       {children}
     </div>
   );
+};
+
+Col.propTypes = {
+  children: PropTypes.node.isRequired,
+  justifyContent: PropTypes.oneOf(['Center']),
+  alignItems: PropTypes.oneOf(['Center']),
 };
 
 export default Col;
