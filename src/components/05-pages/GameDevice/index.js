@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-import Col from './components/01-atoms/Col';
-import GameBoard from './components/02-molecules/GameBoard';
-import GameConsole from './components/03-organisms/GameConsole';
+import Presenter from './presenter';
 
-import './App.css';
+class GameDevice extends Component {
 
-class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -23,6 +20,7 @@ class App extends Component {
     this._successFail = this._successFail.bind(this);
     this._resetPlayer = this._resetPlayer.bind(this);
     this._nextStage = this._nextStage.bind(this);
+    this._display = this._display.bind(this);
   }
 
   _start() {
@@ -81,6 +79,14 @@ class App extends Component {
     }
   }
 
+  _display() {
+    const { game, player } = this.state;
+    const { _successFail } = this;
+    return game.length === 0 || player.length === 0
+      ? ''
+      : _successFail(game, player);
+  }
+
   _nextStage() {
     const { _makeRandomInt, _showGame } = this;
     const { count, game } = this.state;
@@ -103,22 +109,16 @@ class App extends Component {
   }
 
   render() {
-    const { _start, _playerInput, _successFail } = this;
-    const { activeButton, game, player } = this.state;
-    return (
-      <Col justifyContent="SpaceBetween" alignItems="Center" height="20rem">
-        <GameConsole
-          start={_start}
-          display={
-            game.length === 0 || player.length === 0
-              ? ''
-              : _successFail(game, player)
-          }
-        />
-        <GameBoard playerInput={_playerInput} activeButton={activeButton} />
-      </Col>
-    );
+    const { _start, _playerInput, _display } = this;
+    const { activeButton } = this.state;
+    return <Presenter
+      start={_start}
+      display={_display()}
+      playerInput={_playerInput}
+      activeButton={activeButton}
+    />;
   }
+
 }
 
-export default App;
+export default GameDevice;

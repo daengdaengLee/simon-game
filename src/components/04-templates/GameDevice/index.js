@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Col from '../../01-atoms/Col';
 
@@ -11,5 +12,11 @@ const GameDevice = ({ gameConsole, gameController, gameHeading }) => (
     </Col>
   </Col>
 );
+
+GameDevice.propTypes = {
+  gameConsole: PropTypes.node.isRequired,
+  gameController: PropTypes.node.isRequired,
+  gameHeading: PropTypes.node.isRequired,
+};
 
 export default GameDevice;
