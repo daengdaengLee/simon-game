@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import './style.css';
 
-const Col = ({ children, justifyContent, alignItems, width, height, border, backgroundColor }) => {
-  const styles = { width, height, border, backgroundColor };
+const Col = ({ children, justifyContent, alignItems, width, height, border, backgroundColor, borderRadius }) => {
+  const styles = { width, height, border, backgroundColor, borderRadius };
   let myClassName = 'My__Col';
   if(justifyContent) myClassName += ` My__JustifyContent__${justifyContent}`;
   if(alignItems) myClassName += ` My__AlignItems__${alignItems}`;
@@ -23,6 +23,7 @@ Col.propTypes = {
   height: PropTypes.string,
   border: PropTypes.string,
   backgroundColor: PropTypes.string,
+  borderRadius: PropTypes.string,
 };
 
 export default Col;
