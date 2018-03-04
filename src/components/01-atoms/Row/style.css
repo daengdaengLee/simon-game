@@ -1,0 +1,12 @@
+.My__Row {
+  display: flex;
+}
+.My__Row.My__JustifyContent__SpaceBetween {
+  justify-content: space-between;
+}
+.My__Row.My__JustifyContent__Center {
+  justify-content: center;
+}
+.My__Row.My__AlignItems__Center {
+  align-items: center;
+}

@@ -1,0 +1,33 @@
+.My__GameButton {
+  width: 4rem;
+  height: 4rem;
+  outline: none;
+  border-radius: 0.2rem;
+  border: none;
+  cursor: pointer;
+}
+
+.My__Background__Red {
+  background-color: #9F0F17;
+}
+.My__Background__Red:active, .My__Background__Red.active {
+  background-color: #FF4C4C;
+}
+.My__Background__Yellow {
+  background-color: #CCA707;
+}
+.My__Background__Yellow:active, .My__Background__Yellow.active {
+  background-color: #FED93F;
+}
+.My__Background__Green {
+  background-color: #00A74A;
+}
+.My__Background__Green:active, .My__Background__Green.active {
+  background-color: #13FF7C;
+}
+.My__Background__Blue {
+  background-color: #094A8F;
+}
+.My__Background__Blue:active, .My__Background__Blue.active {
+  background-color: #1C8CFF;
+}

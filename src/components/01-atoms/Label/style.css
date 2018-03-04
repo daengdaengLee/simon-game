@@ -1,0 +1,9 @@
+.My__Label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  user-select: none;
+  height: 3.4rem;
+}
