@@ -24,10 +24,10 @@ class GameDevice extends Component {
   }
 
   _start() {
-    const { _makeRandomInt, _showGame } = this;
-    const game = [_makeRandomInt()];
+    const { _makeGame, _showGame } = this;
+    const game = _makeGame(1);
     setTimeout(() => _showGame(game), 500);
-    this.setState({ game, count: 1 });
+    this.setState({ game, count: 1, player: [], activeButton: null });
   }
 
   _makeRandomInt() {
@@ -80,16 +80,22 @@ class GameDevice extends Component {
   }
 
   _display() {
-    const { game, player } = this.state;
-    const { _successFail } = this;
-    return game.length === 0 || player.length === 0
-      ? ''
-      : _successFail(game, player);
+    const { game, player, count } = this.state;
+    const { _successFail, _start } = this;
+    if(count === 21) setTimeout(_start, 1000);
+    return count === 21
+      ? 'VICTORY'
+      : game.length === 0
+        ? ''
+        : player.length === 0
+          ? count
+          : _successFail(game, player);
   }
 
   _nextStage() {
     const { _makeRandomInt, _showGame } = this;
     const { count, game } = this.state;
+    if(count === 20) return this.setState({ count: count + 1 });
     const nextGame = [...game, _makeRandomInt()];
     setTimeout(() => _showGame(nextGame), 500);
     this.setState({
